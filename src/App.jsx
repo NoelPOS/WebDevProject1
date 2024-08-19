@@ -3,13 +3,18 @@ import { Bar, Pie } from 'react-chartjs-2'
 import 'chart.js/auto'
 import data from './taladrod-cars.min.json'
 import Detail from './Detail'
+import Home from './Home'
+import Nav from './Nav'
 import './App.css' // Import your CSS file
 
 function App() {
   const [cars, setCars] = useState(data.Cars)
   const [filteredCars, setFilteredCars] = useState(data.Cars)
   const [selectedBrand, setSelectedBrand] = useState('')
+  const [selectedModel, setSelectedModel] = useState('')
+  const [priceRange, setPriceRange] = useState([0, 1000000])
   const [option, setOption] = useState([])
+  const [models, setModels] = useState([])
   const [showDetail, setShowDetail] = useState(false)
   const [detailId, setDetailId] = useState('')
 
@@ -17,105 +22,84 @@ function App() {
     const brands = cars.map((car) => car.NameMMT.split(' ')[0])
     const uniqueBrands = [...new Set(brands)]
     setOption(uniqueBrands)
-  }, [cars])
+
+    // Update models whenever cars or selectedBrand changes
+    const filteredByBrand = cars.filter((car) =>
+      car.NameMMT.includes(selectedBrand)
+    )
+    const brandModels = [...new Set(filteredByBrand.map((car) => car.Model))]
+    setModels(brandModels)
+  }, [cars, selectedBrand])
 
   const handleDetail = (id) => {
     setDetailId(id)
     setShowDetail(true)
   }
 
-  const handleFilter = (brand) => {
-    setSelectedBrand(brand)
-    if (brand === '') {
-      setFilteredCars(cars)
-    } else {
-      const filtered = cars.filter((car) => car.NameMMT.includes(brand))
-      setFilteredCars(filtered)
+  const handleFilter = () => {
+    let filtered = cars
+
+    if (selectedBrand) {
+      filtered = filtered.filter((car) => car.NameMMT.includes(selectedBrand))
     }
+    if (selectedModel) {
+      filtered = filtered.filter((car) => car.Model === selectedModel)
+    }
+
+    setFilteredCars(filtered)
   }
 
-  // Prepare data for the Bar chart
-  const barData = {
-    labels: option,
-    datasets: [
-      {
-        label: 'Number of Cars by Brand',
-        data: option.map(
-          (brand) =>
-            filteredCars.filter((car) => car.NameMMT.includes(brand)).length
-        ),
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-      },
-    ],
-  }
-
-  // Prepare data for the Pie chart
-  const pieData = {
-    labels: option,
-    datasets: [
-      {
-        label: 'Car Distribution by Brand',
-        data: option.map(
-          (brand) =>
-            filteredCars.filter((car) => car.NameMMT.includes(brand)).length
-        ),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
-          'rgba(255, 159, 64, 0.6)',
-        ],
-      },
-    ],
-  }
+  useEffect(() => {
+    handleFilter()
+  }, [selectedBrand, selectedModel, priceRange])
 
   return (
     <div className='container'>
-      <h1>Talad Rod</h1>
-      <h2>Thailand's Number 1 Car Inverntory Website</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-        eligendi inventore odit illum, voluptatem harum aliquid nam corporis
-        dolores, voluptatum iure magni sequi itaque aliquam quis numquam
-        deserunt, officiis perspiciatis minima delectus iusto placeat sed.
-        Beatae ut doloribus necessitatibus quisquam.
-      </p>
-      <h2>Car Inventory</h2>
+      <Home option={option} filteredCars={filteredCars} />
 
       {!showDetail && (
         <div>
-          <div className='charts'>
-            {/* Bar Chart */}
-            <div className='chart-container'>
-              <h2>Bar Chart: Number of Cars by Brand</h2>
-              <Bar style={{ width: '1200px' }} data={barData} />
+          <div className='filters'>
+            {/* Brand Filter */}
+            <div className='brand-filter'>
+              <label htmlFor='brand'>Filter by Brand:</label>
+              <select
+                id='brand'
+                value={selectedBrand}
+                onChange={(e) => {
+                  setSelectedBrand(e.target.value)
+                }}
+              >
+                <option value=''>All</option>
+                {option.map((brand) => (
+                  <option key={brand} value={brand}>
+                    {brand}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            {/* Pie Chart */}
-            <div className='chart-container'>
-              <h2>Pie Chart: Car Distribution by Brand</h2>
-              <Pie style={{ width: '500px' }} data={pieData} />
+            {/* Model Filter */}
+            <div className='model-filter'>
+              <label htmlFor='model'>Filter by Model:</label>
+              <select
+                id='model'
+                value={selectedModel}
+                onChange={(e) => {
+                  setSelectedModel(e.target.value)
+                }}
+                disabled={!selectedBrand} // Disable if no brand is selected
+              >
+                <option value=''>All</option>
+                {models.map((model) => (
+                  <option key={model} value={model}>
+                    {model}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
-          <div className='brand-filter'>
-            <label htmlFor='brand'>Filter by Brand:</label>
-            <select
-              id='brand'
-              value={selectedBrand}
-              onChange={(e) => {
-                handleFilter(e.target.value)
-              }}
-            >
-              <option value=''>All</option>
-              {option.map((brand) => (
-                <option key={brand} value={brand}>
-                  {brand}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <div className='car-list'>
             {filteredCars.map((car) => (
               <div key={car.Cid} className='car-card'>
