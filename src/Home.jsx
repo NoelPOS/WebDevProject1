@@ -57,9 +57,9 @@ const Home = ({ option, filteredCars }) => {
             </div>
 
             {/* Pie Chart */}
-            {/* <div className='chart-container'>
+            <div className='chart-container'>
               <Pie data={pieData} />
-            </div> */}
+            </div>
           </div>
 
           <div className='lg:py-24'>
