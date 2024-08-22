@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css' // Import the same CSS file
 
 function Detail({ cars, detailId, setShowDetail }) {
   const car = cars.find((car) => car.Cid === detailId)
