@@ -13,7 +13,7 @@ const computeCarData = (cars) => {
   cars.forEach((car) => {
     const brand = car.NameMMT.split(' ')[0]
     const model = car.Model
-    const price = parseFloat(car.Prc.replace(',', '')) // Remove commas and convert to number
+    const price = parseFloat(car.Prc.replace(',', '').replace(',', '')) // Remove commas and convert to number
 
     if (!brandData[brand + ' ' + model]) {
       brandData[brand + ' ' + model] = { count: 0, totalValue: 0 }

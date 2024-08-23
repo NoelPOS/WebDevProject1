@@ -63,11 +63,11 @@ const CarTable = ({ brandData }) => {
               {sortedBrandData.map(([brand, data]) => (
                 <tr key={brand}>
                   <td className='py-3 px-4 border-b'>{brand.split(' ')[0]}</td>
-                  <td className='py-3 px-4 border-b'>{brand.split(' ')[1]}</td>
-                  <td className='py-3 px-4 border-b'>{data.count}</td>
                   <td className='py-3 px-4 border-b'>
-                    {data.totalValue.toLocaleString()}
+                    {brand.split(' ').slice(1).join(' ')}
                   </td>
+                  <td className='py-3 px-4 border-b'>{data.count}</td>
+                  <td className='py-3 px-4 border-b'>{data.totalValue}</td>
                 </tr>
               ))}
             </tbody>
