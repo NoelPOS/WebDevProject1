@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Bar, Pie } from 'react-chartjs-2'
 import 'chart.js/auto'
-import data from './taladrod-cars.min.json'
+import data from '../data/taladrod-cars.min.json'
 
 const Home = ({ option, filteredCars }) => {
+  const [cars, setCars] = useState(data.Cars)
   // Prepare data for the Bar chart
   const barData = {
     labels: option,
@@ -11,8 +12,7 @@ const Home = ({ option, filteredCars }) => {
       {
         label: 'Number of Cars by Brand',
         data: option.map(
-          (brand) =>
-            filteredCars.filter((car) => car.NameMMT.includes(brand)).length
+          (brand) => cars.filter((car) => car.NameMMT.includes(brand)).length
         ),
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
       },
@@ -26,8 +26,7 @@ const Home = ({ option, filteredCars }) => {
       {
         label: 'Car Distribution by Brand',
         data: option.map(
-          (brand) =>
-            filteredCars.filter((car) => car.NameMMT.includes(brand)).length
+          (brand) => cars.filter((car) => car.NameMMT.includes(brand)).length
         ),
         backgroundColor: [
           'rgba(255, 99, 132, 0.6)',

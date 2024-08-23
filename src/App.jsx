@@ -1,8 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Dashboard from './Dashboard.jsx'
-import HighlightedCar from './HighlightedCar.jsx'
-import Nav from './Nav.jsx'
+import Dashboard from './pages/Dashboard.jsx'
+import HighlightedCar from './pages/HighlightedCar.jsx'
 
 export const CarContext = createContext()
 

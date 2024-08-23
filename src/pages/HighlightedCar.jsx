@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Nav from './Nav'
-import { CarContext } from './App'
+import Nav from '../components/Nav'
+import { CarContext } from '../App'
 
 const HighlightedCars = () => {
   const { highlightedCars, setHighlightedCars } = useContext(CarContext)
