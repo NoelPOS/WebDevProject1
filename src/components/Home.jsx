@@ -22,33 +22,37 @@ const Home = ({ option, filteredCars }) => {
   // Prepare data for the Stacked Bar chart
   const barData = {
     labels: option,
-    datasets: option
-      .map((brand) => {
-        const brandCars = cars.filter((car) => car.NameMMT.includes(brand))
-        const models = [...new Set(brandCars.map((car) => car.Model))]
+    datasets: option.flatMap((brand, brandIndex) => {
+      const brandCars = cars.filter((car) => car.NameMMT.includes(brand))
+      const models = [...new Set(brandCars.map((car) => car.Model))]
 
-        return models.map((model, index) => ({
-          label: `${brand} - ${model}`,
-          data: option.map((currentBrand) =>
-            currentBrand === brand
-              ? brandCars.filter((car) => car.Model === model).length
-              : 0
-          ),
-          backgroundColor: `rgba(${Math.floor(
-            Math.random() * 255
-          )}, ${Math.floor(Math.random() * 255)}, ${Math.floor(
-            Math.random() * 255
-          )}, 0.6)`,
-        }))
-      })
-      .flat(),
+      return models.map((model, modelIndex) => ({
+        label: `${brand} - ${model}`,
+        data: option.map((currentBrand) =>
+          currentBrand === brand
+            ? brandCars.filter((car) => car.Model === model).length
+            : 0
+        ),
+        backgroundColor: `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
+          Math.random() * 255
+        )}, ${Math.floor(Math.random() * 255)}, 0.6)`,
+      }))
+    }),
   }
 
-  // Chart options to disable the legend
+  // Chart options to disable the legend and configure chart display
   const chartOptions = {
     plugins: {
       legend: {
-        display: false,
+        display: false, // Hide the legend to avoid clutter
+      },
+    },
+    scales: {
+      x: {
+        stacked: true, // Enable stacking on the x-axis
+      },
+      y: {
+        stacked: true, // Enable stacking on the y-axis
       },
     },
   }
@@ -110,9 +114,9 @@ const Home = ({ option, filteredCars }) => {
 
             <a
               href='#'
-              className='mt-8 inline-block rounded bg-orange-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-orange-600 focus:outline-none focus:ring focus:ring-yellow-400'
+              className='mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400'
             >
-              Get Started Today !
+              Get Started Today
             </a>
           </div>
         </div>

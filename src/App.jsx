@@ -9,15 +9,19 @@ function App() {
   const [highlightedCars, setHighlightedCars] = useState([])
   useEffect(() => {
     const savedCars = JSON.parse(localStorage.getItem('favorite'))
-    {savedCars && setHighlightedCars(savedCars)}
-    
+    {
+      savedCars && setHighlightedCars(savedCars)
+    }
   }, [])
   return (
     <CarContext.Provider value={{ highlightedCars, setHighlightedCars }}>
       <Router>
         <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/highlighted' element={<HighlightedCar />} />
+          <Route path='/WebDevProject1/' element={<Dashboard />} />
+          <Route
+            path='/WebDevProject1/highlighted'
+            element={<HighlightedCar />}
+          />
         </Routes>
       </Router>
     </CarContext.Provider>
