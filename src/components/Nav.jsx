@@ -15,7 +15,7 @@ const Nav = () => {
         <ul className='flex items-center space-x-10 justify-center'>
           <li>
             <Link
-              to='/'
+              to='/WebDevProject1/'
               className='text-white text-lg font-semibold hover:text-blue-200 transition duration-300'
             >
               Dashboard
@@ -23,7 +23,7 @@ const Nav = () => {
           </li>
           <li>
             <Link
-              to='/highlighted'
+              to='/WebDevProject1/highlighted'
               className='text-white text-lg font-semibold hover:text-blue-200 transition duration-300'
             >
               Highlighted

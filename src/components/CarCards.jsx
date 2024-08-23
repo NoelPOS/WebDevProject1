@@ -12,7 +12,6 @@ const CarCards = ({
   setDetailId,
   setShowDetail,
 }) => {
-
   const { highlightedCars, setHighlightedCars } = useContext(CarContext)
   // function for toggling the show detail component
   const handleDetail = (id) => {
@@ -118,12 +117,16 @@ const CarCards = ({
                 </button>
                 <button
                   onClick={() => {
-                    setHighlightedCars([...highlightedCars, car])
-                    localStorage.setItem(
-                      'favorite',
-                      JSON.stringify([...highlightedCars, car])
-                    )
-                    alert('Car added to favorites!')
+                    if (highlightedCars.some((c) => c.Cid === car.Cid)) {
+                      return alert('Car already added to favorites!')
+                    } else {
+                      setHighlightedCars([...highlightedCars, car])
+                      localStorage.setItem(
+                        'favorite',
+                        JSON.stringify([...highlightedCars, car])
+                      )
+                      alert('Car added to favorites!')
+                    }
                   }}
                   className='bg-red-600 text-white px-4 py-2 rounded-lg shadow hover:bg-red-500 transition duration-300'
                 >
