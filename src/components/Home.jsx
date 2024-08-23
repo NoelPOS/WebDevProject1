@@ -6,17 +6,51 @@ import data from '../data/taladrod-cars.min.json'
 const Home = ({ option, filteredCars }) => {
   const [cars, setCars] = useState(data.Cars)
   // Prepare data for the Bar chart
+  // const barData = {
+  //   labels: option,
+  //   datasets: [
+  //     {
+  //       label: 'Number of Cars by Brand',
+  //       data: option.map(
+  //         (brand) => cars.filter((car) => car.NameMMT.includes(brand)).length
+  //       ),
+  //       backgroundColor: 'rgba(75, 192, 192, 0.6)',
+  //     },
+  //   ],
+  // }
+
+  // Prepare data for the Stacked Bar chart
   const barData = {
     labels: option,
-    datasets: [
-      {
-        label: 'Number of Cars by Brand',
-        data: option.map(
-          (brand) => cars.filter((car) => car.NameMMT.includes(brand)).length
-        ),
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+    datasets: option
+      .map((brand) => {
+        const brandCars = cars.filter((car) => car.NameMMT.includes(brand))
+        const models = [...new Set(brandCars.map((car) => car.Model))]
+
+        return models.map((model, index) => ({
+          label: `${brand} - ${model}`,
+          data: option.map((currentBrand) =>
+            currentBrand === brand
+              ? brandCars.filter((car) => car.Model === model).length
+              : 0
+          ),
+          backgroundColor: `rgba(${Math.floor(
+            Math.random() * 255
+          )}, ${Math.floor(Math.random() * 255)}, ${Math.floor(
+            Math.random() * 255
+          )}, 0.6)`,
+        }))
+      })
+      .flat(),
+  }
+
+  // Chart options to disable the legend
+  const chartOptions = {
+    plugins: {
+      legend: {
+        display: false,
       },
-    ],
+    },
   }
 
   // Prepare data for the Pie chart
@@ -52,7 +86,7 @@ const Home = ({ option, filteredCars }) => {
             {/* Bar Chart */}
             <div className='chart-container'>
               <h2>Bar Chart: Number of Cars by Brand</h2>
-              <Bar data={barData} />
+              <Bar data={barData} options={chartOptions} />
             </div>
 
             {/* Pie Chart */}
