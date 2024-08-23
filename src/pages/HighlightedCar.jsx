@@ -8,7 +8,9 @@ const HighlightedCars = () => {
   useEffect(() => {
     const savedCars = JSON.parse(localStorage.getItem('favorite')) || []
     setHighlightedCars(savedCars)
-  }, [setHighlightedCars])
+
+    console.log(highlightedCars)
+  }, [])
 
   const removeCarFromHighlight = (car) => {
     const updatedCars = highlightedCars.filter((c) => c.Cid !== car.Cid)
@@ -22,7 +24,7 @@ const HighlightedCars = () => {
       <h1 className='text-4xl font-bold text-center text-gray-800 mb-8'>
         Highlighted Cars
       </h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-12'>
+      {highlightedCars.length >= 0 && (      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-12'>
         {highlightedCars.map((car) => (
           <div
             key={car.Cid}
@@ -57,7 +59,8 @@ const HighlightedCars = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div>)}
+
     </div>
   )
 }

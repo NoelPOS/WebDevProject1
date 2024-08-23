@@ -1,17 +1,19 @@
 import React from 'react'
+import { useContext } from 'react'
+import { CarContext } from '../App'
 
 const CarCards = ({
   selectedBrand,
   setSelectedBrand,
   models,
   filteredCars,
-  highlightedCars,
-  setHighlightedCars,
   option,
   selectedModel,
   setDetailId,
   setShowDetail,
 }) => {
+
+  const { highlightedCars, setHighlightedCars } = useContext(CarContext)
   // function for toggling the show detail component
   const handleDetail = (id) => {
     setDetailId(id)
@@ -21,7 +23,7 @@ const CarCards = ({
   return (
     <div>
       <hr className='mt-10 ' />
-      <h1 className='text-3xl text-center font-bold my-5 underline text-orange-500'>
+      <h1 className='text-4xl text-center font-bold my-5 text-orange-500'>
         Car Cards
       </h1>
       <div className='flex flex-wrap justify-between items-center mb-8 px-10'>
@@ -29,7 +31,7 @@ const CarCards = ({
         <div className='w-full md:w-1/2 lg:w-1/3'>
           <label
             htmlFor='brand'
-            className='block text-gray-700 text-sm font-semibold mb-2'
+            className='block text-gray-700 text-xl font-bold mb-2'
           >
             Filter by Brand:
           </label>
@@ -54,7 +56,7 @@ const CarCards = ({
         <div className='w-full md:w-1/2 lg:w-1/3 mt-4 md:mt-0'>
           <label
             htmlFor='model'
-            className='block text-gray-700 text-sm font-semibold mb-2'
+            className='block text-gray-700 text-xl font-bold mb-2'
           >
             Filter by Model:
           </label>
@@ -81,7 +83,7 @@ const CarCards = ({
         </div>
       </div>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10 py-5'>
         {filteredCars.map((car) => (
           <div
             key={car.Cid}

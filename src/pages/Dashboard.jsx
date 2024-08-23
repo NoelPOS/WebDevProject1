@@ -80,8 +80,6 @@ function Dashboard() {
           setSelectedBrand={setSelectedBrand}
           models={models}
           filteredCars={filteredCars}
-          highlightedCars={highlightedCars}
-          setHighlightedCars={setHighlightedCars}
           option={option}
           selectedModel={selectedModel}
           setDetailId={setDetailId}

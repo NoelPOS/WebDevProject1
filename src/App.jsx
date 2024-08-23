@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard.jsx'
 import HighlightedCar from './pages/HighlightedCar.jsx'
 
-export const CarContext = createContext()
+export const CarContext = createContext([])
 
 function App() {
   const [highlightedCars, setHighlightedCars] = useState([])
   useEffect(() => {
     const savedCars = JSON.parse(localStorage.getItem('favorite'))
-    setHighlightedCars(savedCars)
+    {savedCars && setHighlightedCars(savedCars)}
+    
   }, [])
   return (
     <CarContext.Provider value={{ highlightedCars, setHighlightedCars }}>
