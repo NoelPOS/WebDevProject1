@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <nav className='bg-blue-600 p-4 shadow-md sticky top-0 z-50'>
       <div className='flex items-center justify-between px-5'>
-        <Link to='/' className=''>
+        <Link to='/WebDevProject1/' className=''>
           <img
             src='https://www.taladrod.com/w40/img/logo.svg'
             className='w-[50%]'
