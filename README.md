@@ -37,7 +37,9 @@ The Car Analytics Project is a web application designed to provide an interactiv
 ## Screenshots
 
 ### Dashboard Page
-![Dashboard Page](path/to/dashboard-screenshot.png)
+
+![image](https://github.com/user-attachments/assets/36971dda-6dbf-44b6-9f06-98ed46d5842d)
+
 *Shows the car statistics table, car cards, and chart visualizations.*
 
 ### Highlighted Cars Page
