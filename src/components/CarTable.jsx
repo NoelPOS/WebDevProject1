@@ -27,17 +27,18 @@ const CarTable = ({ brandData }) => {
           Car Statistics
         </h2>
         <button
-          onClick={handleToggleTable}
-          className='px-4 py-2 bg-blue-500 text-white rounded'
-        >
-          Toggle Table
-        </button>
-        <button
           onClick={handleSort}
           className='px-4 py-2 bg-green-500 text-white rounded ml-4'
         >
           Sort by Brand ({sortDirection === 'asc' ? 'A-Z' : 'Z-A'})
         </button>
+        <button
+          onClick={handleToggleTable}
+          className='px-4 py-2 bg-blue-500 text-white rounded'
+        >
+          Toggle Table
+        </button>
+
       </div>
 
       {isTableVisible && (
