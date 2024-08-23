@@ -1,17 +1,19 @@
 import React from 'react'
+import { useContext } from 'react'
+import { CarContext } from '../App'
 
 const CarCards = ({
   selectedBrand,
   setSelectedBrand,
   models,
   filteredCars,
-  highlightedCars,
-  setHighlightedCars,
   option,
   selectedModel,
   setDetailId,
   setShowDetail,
 }) => {
+
+  const { highlightedCars, setHighlightedCars } = useContext(CarContext)
   // function for toggling the show detail component
   const handleDetail = (id) => {
     setDetailId(id)
