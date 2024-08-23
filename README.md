@@ -72,6 +72,7 @@ To run this project locally, follow these steps:
    ```bash
    npm run dev
    
+   
 4. **Build the project for production:**
    ```bash
    npm run build
@@ -79,5 +80,21 @@ To run this project locally, follow these steps:
 5. **Deploy to GitHub Pages:**
    ```bash
    npm run deploy
+
+## Usage
+
+- **Explore the Dashboard**: Start by exploring the dashboard, where you can view car statistics, filter car cards, and interact with the data charts.
+- **Manage Favorites**: Click on the "Add to Favorites" button to save cars to your highlighted list. Navigate to the Highlighted Cars page to view or remove them.
+- **Toggle the Table**: Use the toggle feature to hide or show the car statistics table, depending on your preference.
+
+## Team Members
+
+- **Khin Myo Aye** - 6540211
+- **Noel Paing Oak Soe** - 6530183
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
 
 
