@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import data from '../data/taladrod-cars.min.json'
+import data from '../data/taladrod-cars.json'
 import Detail from '../components/Detail'
 import Home from '../components/Home'
 import Nav from '../components/Nav'

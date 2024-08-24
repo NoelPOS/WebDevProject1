@@ -100,14 +100,14 @@ const CarCards = ({
               <h3 className='text-lg font-semibold text-gray-800 mb-2'>
                 Model: {car.Model}
               </h3>
-              <h3 className='text-md text-gray-700 mb-2'>
+              {/* <h3 className='text-md text-gray-700 mb-2'>
                 Province: {car.Province}
               </h3>
               <p className='text-md text-gray-600 mb-2'>Year: {car.Yr}</p>
               <p className='text-md text-gray-600 mb-2'>Status: {car.Status}</p>
               <p className='text-md font-bold text-green-600 mb-4'>
                 Price: {car.Prc} Baht
-              </p>
+              </p> */}
               <div className='flex items-center justify-between'>
                 <button
                   onClick={() => handleDetail(car.Cid)}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Bar, Pie } from 'react-chartjs-2'
 import 'chart.js/auto'
-import data from '../data/taladrod-cars.min.json'
+import data from '../data/taladrod-cars.json'
 
 const Home = ({ option, filteredCars }) => {
   const [cars, setCars] = useState(data.Cars)
@@ -114,7 +114,7 @@ const Home = ({ option, filteredCars }) => {
 
             <a
               href='#'
-              className='mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400'
+              className='mt-8 inline-block rounded bg-orange-700 px-12 py-3 text-sm font-medium text-white transition hover:bg-orange-600 focus:outline-none focus:ring focus:ring-yellow-400'
             >
               Get Started Today
             </a>
