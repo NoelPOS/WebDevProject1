@@ -81,24 +81,6 @@ const Home = ({ option, filteredCars }) => {
     <section>
       <div className='mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16'>
         <div className='grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 items-center'>
-          <div className='relative h-64 overflow-hidden rounded-lg sm:h-full lg:order-last lg:h-full'>
-            {/* <img
-              alt=''
-              src='https://www.taladrod.com/w40/img/logo.svg'
-              className='absolute inset-0 h-[60%] w-full object-cover'
-            /> */}
-            {/* Bar Chart */}
-            <div className='chart-container'>
-              <h2>Bar Chart: Number of Cars by Brand</h2>
-              <Bar data={barData} options={chartOptions} />
-            </div>
-
-            {/* Pie Chart */}
-            <div className='chart-container'>
-              <Pie data={pieData} />
-            </div>
-          </div>
-
           <div className='lg:py-24'>
             <h2 className='text-3xl font-bold sm:text-4xl'>Talarod</h2>
             <h3 className='text-2xl font-bold sm:text-2xl mt-2'>
@@ -118,6 +100,22 @@ const Home = ({ option, filteredCars }) => {
             >
               Get Started Today
             </a>
+          </div>
+          {/* Pie Chart */}
+          <div className='chart-container'>
+            <Pie data={pieData} />
+          </div>
+        </div>
+        <div className='relative h-64 overflow-hidden rounded-lg sm:h-full lg:order-last lg:h-full'>
+          {/* <img
+              alt=''
+              src='https://www.taladrod.com/w40/img/logo.svg'
+              className='absolute inset-0 h-[60%] w-full object-cover'
+            /> */}
+          {/* Bar Chart */}
+          <div className='chart-container'>
+            <h2>Bar Chart: Number of Cars by Brand</h2>
+            <Bar data={barData} options={chartOptions} />
           </div>
         </div>
       </div>
