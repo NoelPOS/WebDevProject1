@@ -82,6 +82,7 @@ function Dashboard() {
           filteredCars={filteredCars}
           option={option}
           selectedModel={selectedModel}
+          setSelectedModel={setSelectedModel}
           setDetailId={setDetailId}
           setShowDetail={setShowDetail}
         />

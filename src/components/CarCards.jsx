@@ -11,6 +11,7 @@ const CarCards = ({
   selectedModel,
   setDetailId,
   setShowDetail,
+  setSelectedModel,
 }) => {
   const { highlightedCars, setHighlightedCars } = useContext(CarContext)
   // function for toggling the show detail component

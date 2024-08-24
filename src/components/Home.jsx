@@ -98,11 +98,14 @@ const Home = ({ option, filteredCars }) => {
               href='#'
               className='mt-8 inline-block rounded bg-orange-700 px-12 py-3 text-sm font-medium text-white transition hover:bg-orange-600 focus:outline-none focus:ring focus:ring-yellow-400'
             >
-              Get Started Today
+              Get Started Today !
             </a>
           </div>
           {/* Pie Chart */}
           <div className='chart-container'>
+            <h2 className='text-center text-2xl mb-4'>
+              Pie Chart: Number of Brands
+            </h2>
             <Pie data={pieData} />
           </div>
         </div>
@@ -114,7 +117,9 @@ const Home = ({ option, filteredCars }) => {
             /> */}
           {/* Bar Chart */}
           <div className='chart-container'>
-            <h2>Bar Chart: Number of Cars by Brand</h2>
+            <h2 className='text-center text-2xl mb-4'>
+              Bar Chart: Number of Models by Brand
+            </h2>
             <Bar data={barData} options={chartOptions} />
           </div>
         </div>
