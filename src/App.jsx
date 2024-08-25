@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard.jsx'
 import HighlightedCar from './pages/HighlightedCar.jsx'
 
@@ -15,7 +15,7 @@ function App() {
   }, [])
   return (
     <CarContext.Provider value={{ highlightedCars, setHighlightedCars }}>
-      <Router basename='WebDevProject1'>
+      <Router>
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/highlighted' element={<HighlightedCar />} />
