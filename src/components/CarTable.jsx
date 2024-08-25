@@ -20,6 +20,21 @@ const CarTable = ({ brandData }) => {
       : brandB.localeCompare(brandA)
   )
 
+  const groupedData = sortedBrandData.reduce((acc, [brand, data]) => {
+    const brandKey = brand.split(' ')[0]
+    if (!acc[brandKey]) {
+      acc[brandKey] = {
+        brandTotal: 0,
+        brandValue: 0,
+        models: [],
+      }
+    }
+    acc[brandKey].brandTotal += data.count
+    acc[brandKey].brandValue += data.totalValue
+    acc[brandKey].models.push({ brand, data })
+    return acc
+  }, {})
+
   return (
     <div className='px-10 mt-8'>
       <div className='flex items-center justify-between mb-4'>
@@ -37,7 +52,7 @@ const CarTable = ({ brandData }) => {
             onClick={handleToggleTable}
             className='px-4 py-2 bg-blue-500 text-white rounded'
           >
-            &darr;  Toggle Table
+            &darr; Toggle Table
           </button>
         )}
         {isTableVisible && (
@@ -45,10 +60,9 @@ const CarTable = ({ brandData }) => {
             onClick={handleToggleTable}
             className='px-4 py-2 bg-blue-500 text-white rounded'
           >
-            &uarr;  Toggle Table
+            &uarr; Toggle Table
           </button>
         )}
-
       </div>
 
       {isTableVisible && (
@@ -71,15 +85,40 @@ const CarTable = ({ brandData }) => {
               </tr>
             </thead>
             <tbody>
-              {sortedBrandData.map(([brand, data]) => (
-                <tr key={brand}>
-                  <td className='py-3 px-4 border-b text-center'>{brand.split(' ')[0]}</td>
-                  <td className='py-3 px-4 border-b text-center'>
-                    {brand.split(' ').slice(1).join(' ')}
-                  </td>
-                  <td className='py-3 px-4 border-b text-center'>{data.count}</td>
-                  <td className='py-3 px-4 border-b text-center'>{data.totalValue}</td>
-                </tr>
+              {Object.entries(groupedData).map(([brandKey, group]) => (
+                <React.Fragment key={brandKey}>
+                  <tr className='bg-gray-100'>
+                    <td
+                      className='py-3 px-4 border-b text-center font-bold'
+                      colSpan='2'
+                    >
+                      {brandKey}
+                    </td>
+
+                    <td className='py-3 px-4 border-b text-center font-bold'>
+                      {group.brandTotal}
+                    </td>
+                    <td className='py-3 px-4 border-b text-center font-bold'>
+                      {group.brandValue}
+                    </td>
+                  </tr>
+                  {group.models.map(({ brand, data }) => (
+                    <tr key={brand}>
+                      <td className='py-3 px-4 border-b text-center'>
+                        {brand.split(' ')[0]}
+                      </td>
+                      <td className='py-3 px-4 border-b text-center'>
+                        {brand.split(' ').slice(1).join(' ')}
+                      </td>
+                      <td className='py-3 px-4 border-b text-center'>
+                        {data.count}
+                      </td>
+                      <td className='py-3 px-4 border-b text-center'>
+                        {data.totalValue}
+                      </td>
+                    </tr>
+                  ))}
+                </React.Fragment>
               ))}
             </tbody>
           </table>

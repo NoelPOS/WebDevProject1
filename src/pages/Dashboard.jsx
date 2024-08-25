@@ -7,19 +7,26 @@ import CarTable from '../components/CarTable'
 import { CarContext } from '../App'
 import CarCards from '../components/CarCards'
 
-// Compute car counts and values by brand and model
 const computeCarData = (cars) => {
   const brandData = {}
+
   cars.forEach((car) => {
     const brand = car.NameMMT.split(' ')[0]
     const model = car.Model
-    const price = parseFloat(car.Prc.replace(',', '').replace(',', '')) // Remove commas and convert to number
+    // Remove commas and asterisks, then parse the price to a float
+    const price = parseFloat(car.Prc.replace(/,/g, '').replace(/\*/g, ''))
 
-    if (!brandData[brand + ' ' + model]) {
-      brandData[brand + ' ' + model] = { count: 0, totalValue: 0 }
+    // Check if the price is a valid number
+    if (!isNaN(price)) {
+      const key = `${brand} ${model}`
+      if (!brandData[key]) {
+        brandData[key] = { count: 0, totalValue: 0 }
+      }
+      brandData[key].count += 1
+      brandData[key].totalValue += price
+    } else {
+      console.warn(`Invalid price detected for ${brand} ${model}: ${car.Prc}`)
     }
-    brandData[brand + ' ' + model].count += 1
-    brandData[brand + ' ' + model].totalValue += price
   })
 
   return brandData
