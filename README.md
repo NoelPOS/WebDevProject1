@@ -1,6 +1,6 @@
 # Car Analytics Project
 
-Welcome to the **Car Analytics Project**! This project is developed as part of a university course for Web Development, focusing on building a responsive, user-friendly web application for analyzing and managing car statistics. The project leverages modern web technologies, including Vite for fast development, Tailwind CSS for styling, and Chart.js for data visualization. The application is deployed using GitHub Pages, ensuring easy access and sharing.
+**Car Analytics Project** .This project is developed as part of a university course for Web Development, focusing on building a responsive, user-friendly web application for analyzing and managing car statistics. The project leverages modern web technologies, including Vite for fast development, Tailwind CSS for styling, and Chart.js for data visualization. The application is deployed using GitHub Pages, ensuring easy access and sharing.
 
 ## Table of Contents
 - [Description](#description)
@@ -38,11 +38,14 @@ The Car Analytics Project is a web application designed to provide an interactiv
 
 ### Dashboard Page
 
-![image](https://github.com/user-attachments/assets/6127434c-0e0d-4703-a748-ec3ecb04292a)
+![image](https://github.com/user-attachments/assets/1e86c5f0-9034-4da6-adc2-ee2d4dc97d5d)
 
-![image](https://github.com/user-attachments/assets/f625673b-4c0c-46d6-9858-71aae60d455a)
+
+![image](https://github.com/user-attachments/assets/a3cc8b93-dd4c-47b1-87af-42a33a32d139)
+
 
 ![image](https://github.com/user-attachments/assets/5adf9024-1fc5-4132-912e-c4b0afceb626)
+
 
 ![image](https://github.com/user-attachments/assets/1790e039-f00d-4c16-87ee-4e433b630e9b)
 
@@ -104,12 +107,11 @@ To run this project locally, follow these steps:
 
 ## Team Members
 
+- **Section** - 541
 - **Khin Myo Aye** - 6540211
 - **Noel Paing Oak Soe** - 6530183
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 
 
