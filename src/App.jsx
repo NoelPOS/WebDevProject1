@@ -15,13 +15,10 @@ function App() {
   }, [])
   return (
     <CarContext.Provider value={{ highlightedCars, setHighlightedCars }}>
-      <Router>
+      <Router basename='WebDevProject1'>
         <Routes>
-          <Route path='/WebDevProject1/' element={<Dashboard />} />
-          <Route
-            path='/WebDevProject1/highlighted'
-            element={<HighlightedCar />}
-          />
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/highlighted' element={<HighlightedCar />} />
         </Routes>
       </Router>
     </CarContext.Provider>
