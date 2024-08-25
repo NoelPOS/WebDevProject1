@@ -99,7 +99,7 @@ const CarTable = ({ brandData }) => {
                       {group.brandTotal}
                     </td>
                     <td className='py-3 px-4 border-b text-center font-bold'>
-                      {group.brandValue}
+                      {group.brandValue.toLocaleString()}
                     </td>
                   </tr>
                   {group.models.map(({ brand, data }) => (
@@ -114,7 +114,7 @@ const CarTable = ({ brandData }) => {
                         {data.count}
                       </td>
                       <td className='py-3 px-4 border-b text-center'>
-                        {data.totalValue}
+                        {data.totalValue.toLocaleString()}
                       </td>
                     </tr>
                   ))}
